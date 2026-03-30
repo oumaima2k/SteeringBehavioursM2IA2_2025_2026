@@ -51,7 +51,6 @@ function creerVehicles(nb) {
   }
 }
 
-
 // la fonction draw est appelée en boucle par p5.js, 60 fois par seconde par défaut
 // Le canvas est effacé automatiquement avant chaque appel à draw
 function draw() {
@@ -73,9 +72,10 @@ function draw() {
   // la couleur de remplissage est rouge car on a appelé fill(255, 0, 0) plus haut
   // pas de contours car on a appelé noStroke() plus haut
   //circle(target.x, target.y, 32);
-  
+
+  target.fleeVehicles(vehicles);
   target.update();
-  target.show()
+  target.show();
   target.edges();
 
   vehicles.forEach((vehicle) => {
@@ -108,6 +108,7 @@ function draw() {
     if (vehicle.pos.dist(target.pos) < vehicle.r + 16) {
       // le véhicule a touché la cible, on le fait réapparaître ailleurs aléatoirement dans le canvas
       vehicle.pos = createVector(random(width), random(height));
+
     }
 
     // si le véhicule sort du canvas, on le fait réapparaître de l'autre côté
